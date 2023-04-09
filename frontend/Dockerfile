@@ -1,6 +1,10 @@
-FROM node:18-alpine
+FROM node:18-alpine as build
 WORKDIR /app
 COPY package.json ./
-COPY yarn.lock ./
-RUN yarn install 
-CMD ["yarn", "start"]
+COPY pnpm-lock.yaml ./
+RUN yarn global add pnpm
+RUN pnpm i
+COPY . .
+RUN pnpm build
+
+COPY ./build /var/www/html

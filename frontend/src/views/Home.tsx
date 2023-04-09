@@ -1,7 +1,7 @@
 export default function Home() {
     return (
         <div className="home" style={{ display: "flex", alignSelf: "center" }}>
-            Hello, World!
+            This is React Project!
         </div>
     );
 }
