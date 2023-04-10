@@ -1,10 +1,19 @@
-FROM node:18-alpine as build
+FROM node:lts-alpine
+
 WORKDIR /app
-COPY package.json ./
-COPY pnpm-lock.yaml ./
-RUN yarn global add pnpm
-RUN pnpm i
+
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+COPY package.json pnpm-*.yaml ./
+
+RUN pnpm install --frozen-lockfile
+
 COPY . .
+
 RUN pnpm build
 
-COPY ./build /var/www/html
+RUN npm install -g serve
+
+EXPOSE 3000
+
+CMD [ "serve", "-s", "build" ]
