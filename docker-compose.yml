@@ -5,34 +5,28 @@ services:
       context: ./backend
     container_name: backend_production
     tty: true
-    environment:
-      SERVICE_NAME: app
-      SERVICE_TAGS: dev
-    volumes:
-      - ./backend:/var/www/html
-    networks:
-      - labnet
-  nginx:
-    image: nginx:alpine
-    container_name: nginx
-    restart: unless-stopped
-    tty: true
-    ports: 
-      - "80:80"
-    volumes:
-      - ./backend:/var/www/html
-      - ./backend/config/:/etc/nginx/conf.d/
     networks:
       - labnet
   frontend:
     build: 
       context: ./frontend
-      dockerfile: Dockerfile.dev
-    volumes:
-      - "./frontend:/app:Z"
-      - "/app/node_modules"
+    container_name: frontend_production
     networks:
       - labnet
+  nginx:
+    container_name: nginx
+    restart: unless-stopped
+    build: 
+      context: ./server
+    tty: true
+    ports: 
+      - 80:80
+    volumes:
+      - ./backend:/var/www/html/api
+    networks:
+      - labnet
+    depends_on:
+      - app
+      - frontend
 networks:
   labnet:
-    external: true
