@@ -9,7 +9,7 @@ RUN apk update
 
 RUN rm -rf /var/cache/apk/*
 
-COPY . ./
+COPY . ./api
 
 EXPOSE 9000
 CMD ["php-fpm"]
