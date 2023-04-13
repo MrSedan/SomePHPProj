@@ -1,7 +1,5 @@
-.vscode
+**/.vscode
 
-Dockerfile
-docker-compose.yml
-docker-compose.dev.yml
-Dockerfile.dev
-.dockerignore
+**/Dockerfile
+**/Dockerfile.dev
+**/.dockerignore
