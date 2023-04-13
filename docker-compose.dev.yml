@@ -26,7 +26,8 @@ services:
     container_name: nginx_dev
     restart: unless-stopped
     build: 
-      context: ./server
+      context: ./
+      dockerfile: Dockerfile.dev
     tty: true
     ports: 
       - 80:80
