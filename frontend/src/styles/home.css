@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #596275;
+}
+
+.button {
+    height: 10vh;
+    line-height: 10vh;
+    font-size: 4vh;
+    position: relative;
+    background-color: #ea8685;
+    padding: 0 3vh;
+    color: white;
+    user-select: none;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: 0.4s ease-in-out;
+}
+
+.button::before,
+.button::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+}
+‍.button::before {
+    border-radius: 2%/30%;
+    background-color: #ea8685;
+    top: 33px;
+    bottom: 33px;
+    right: -2px;
+    left: -2px;
+}
+
+.button::after {
+    border-radius: 30%/2%;
+    background-color: #ea8685;
+    left: 33px;
+    right: 33px;
+    top: -2px;
+    bottom: -2px;
+}
+
+.button:hover {
+    background-color: white;
+    color: black;
+}
