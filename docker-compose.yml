@@ -14,7 +14,7 @@ services:
     networks:
       - labnet
   nginx:
-    container_name: nginx
+    container_name: nginx_production
     restart: unless-stopped
     build: 
       context: ./
