@@ -18,6 +18,7 @@ services:
     restart: unless-stopped
     build: 
       context: ./
+      dockerfile: Dockerfile
     tty: true
     ports: 
       - 80:80
